@@ -1,3 +1,38 @@
 {
-  "extends": "next/core-web-vitals"
+    "env": {
+        "browser": true,
+        "node": true,
+        "es2021": true
+    },
+    "plugins": ["react", "prettier", "@typescript-eslint", "import"],
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "airbnb",
+        "prettier",
+        "next"
+    ],
+    "ignorePatterns": ["node_modules/", "serviceWorker.js", "setupTests.js"],
+    "rules": {
+        "import/extensions": "off",
+        "react/react-in-jsx-scope": 0,
+        "react/function-component-definition": "off",
+        "react/prefer-stateless-function": 0,
+        "react/jsx-one-expression-per-line": 0,
+        "no-nested-ternary": 0,
+        "react/jsx-props-no-spreading": "off",
+        "import/prefer-default-export": "off",
+        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+        "no-extraneous-dependencies": "off",
+        "react/require-default-props": "off",
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": ["**/*.stories.*", "**/.storybook/**/*.*"],
+                "peerDependencies": true
+            }
+        ]
+    }
 }
