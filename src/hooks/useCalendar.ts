@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { extractDateTime, getDayOffsetDateTime, getToday } from 'utils/date';
+import {
+    extractDateTime,
+    getCurrentCalendar,
+    getDayOffsetDateTime,
+    getToday
+} from 'utils/date';
 
 export const useCalendar = () => {
     const [currentActiveDate, setCurrentActiveDate] = useState(getToday);
@@ -24,6 +29,8 @@ export const useCalendar = () => {
         const nextMonthDateTime = getDayOffsetDateTime(currentActiveDate, 1);
         setCurrentActiveDate(nextMonthDateTime);
     };
+
+    getCurrentCalendar(currentActiveDate);
 
     return {
         currentYear,

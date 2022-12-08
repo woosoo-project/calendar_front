@@ -18,4 +18,16 @@ const getDayOffsetDateTime = (date: string, offset: number) =>
         new Date(date).setMonth(extractDateTime(date).month + offset - 1)
     ).toLocaleDateString();
 
-export { getToday, extractDateTime, getDayOffsetDateTime };
+// 첫째주 빈 값 & 막주 빈값 이전 이후 달로 채워야함
+const getCurrentCalendar = (currentActiveDate: string) => {
+    const calendarInfo: string[] = [];
+
+    const { year, month } = extractDateTime(currentActiveDate);
+
+    const firstDate = new Date(year, month + 1, 1).getDate();
+    const lastDate = new Date(year, month + 1, 0).getDate();
+
+    console.log(calendarInfo, firstDate, lastDate);
+};
+
+export { getToday, extractDateTime, getDayOffsetDateTime, getCurrentCalendar };

@@ -7,6 +7,9 @@ const Calendar = () => {
     return (
         <div>
             <header>
+                <button type="button" onClick={dateController.moveToToday}>
+                    오늘
+                </button>
                 <button type="button" onClick={dateController.moveToBeforeMonth}>
                     이전
                 </button>
