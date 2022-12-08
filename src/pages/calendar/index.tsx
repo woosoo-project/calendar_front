@@ -4,6 +4,8 @@ import React from 'react';
 const Calendar = () => {
     const dateController = useCalendar();
 
+    console.log(dateController.calendar);
+
     return (
         <div>
             <header>

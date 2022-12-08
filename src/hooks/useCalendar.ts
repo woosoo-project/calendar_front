@@ -8,7 +8,7 @@ import {
 
 export const useCalendar = () => {
     const [currentActiveDate, setCurrentActiveDate] = useState(getToday);
-
+    const [calendar, setCalendar] = useState(getCurrentCalendar(currentActiveDate));
     const {
         year: currentYear,
         month: currentMonth,
@@ -19,20 +19,22 @@ export const useCalendar = () => {
     const moveToBeforeMonth = () => {
         const beforeMonthDateTime = getDayOffsetDateTime(currentActiveDate, -1);
         setCurrentActiveDate(beforeMonthDateTime);
+        setCalendar(getCurrentCalendar(beforeMonthDateTime));
     };
 
     const moveToToday = () => {
         setCurrentActiveDate(getToday);
+        setCalendar(getCurrentCalendar(getToday));
     };
 
     const moveToNextMonth = () => {
         const nextMonthDateTime = getDayOffsetDateTime(currentActiveDate, 1);
         setCurrentActiveDate(nextMonthDateTime);
+        setCalendar(getCurrentCalendar(nextMonthDateTime));
     };
 
-    getCurrentCalendar(currentActiveDate);
-
     return {
+        calendar,
         currentYear,
         currentMonth,
         currentDate,
