@@ -1,25 +1,26 @@
 import { useCalendar } from 'hooks/useCalendar';
+import Header from 'layout/header';
 import React from 'react';
+import { css } from '@emotion/react';
+
+const calendarGridStyle = (rowNum: number) => css`
+    display: grid;
+    grid-template-columns: repeat(7, calc(100% / 7));
+    grid-auto-rows: calc(calc(100vh - 42rem) / ${rowNum});
+`;
 
 const Calendar = () => {
     const dateController = useCalendar();
-
-    console.log(dateController.calendar);
+    const rowCount = dateController.calendar.length / 7;
 
     return (
         <div>
-            <header>
-                <button type="button" onClick={dateController.moveToToday}>
-                    오늘
-                </button>
-                <button type="button" onClick={dateController.moveToBeforeMonth}>
-                    이전
-                </button>
-                <button type="button" onClick={dateController.moveToNextMonth}>
-                    이후
-                </button>
-                {dateController.currentYear}년 {dateController.currentMonth}월
-            </header>
+            <Header dateController={dateController} />
+            <div css={calendarGridStyle(rowCount)}>
+                {dateController.calendar.map((date, idx) => (
+                    <div key={date + idx}>{date}</div>
+                ))}
+            </div>
         </div>
     );
 };

@@ -24,9 +24,13 @@
         "no-nested-ternary": 0,
         "react/jsx-props-no-spreading": "off",
         "import/prefer-default-export": "off",
-        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+        "react/jsx-filename-extension": [
+            "warn",
+            { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+        ],
         "no-extraneous-dependencies": "off",
         "react/require-default-props": "off",
+        "react/no-array-index-key": "off",
         "import/no-extraneous-dependencies": [
             "error",
             {
