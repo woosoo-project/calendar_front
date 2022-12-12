@@ -5,7 +5,7 @@ type controllerType = {
     moveToToday: () => void;
     moveToBeforeMonth: () => void;
     moveToNextMonth: () => void;
-    calendar: Array<number>;
+    calendar: Array<string>;
     currentYear: number;
     currentMonth: number;
     currentDate: number;

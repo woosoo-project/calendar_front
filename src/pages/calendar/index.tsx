@@ -2,6 +2,7 @@ import { useCalendar } from 'hooks/useCalendar';
 import Header from 'layout/header';
 import React from 'react';
 import { css } from '@emotion/react';
+import { extractDateTime } from 'utils/date';
 
 const calendarGridStyle = (rowNum: number) => css`
     display: grid;
@@ -17,8 +18,8 @@ const Calendar = () => {
         <div>
             <Header dateController={dateController} />
             <div css={calendarGridStyle(rowCount)}>
-                {dateController.calendar.map((date, idx) => (
-                    <div key={date + idx}>{date}</div>
+                {dateController.calendar.map((date) => (
+                    <div key={date}>{extractDateTime(date).date}</div>
                 ))}
             </div>
         </div>

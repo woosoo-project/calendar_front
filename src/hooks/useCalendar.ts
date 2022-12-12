@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {
     extractDateTime,
     getCurrentCalendar,
-    getDayOffsetDateTime,
+    getMonthOffsetDateTime,
     getToday
 } from 'utils/date';
 
@@ -17,7 +17,7 @@ export const useCalendar = () => {
     } = extractDateTime(currentActiveDate);
 
     const moveToBeforeMonth = () => {
-        const beforeMonthDateTime = getDayOffsetDateTime(currentActiveDate, -1);
+        const beforeMonthDateTime = getMonthOffsetDateTime(currentActiveDate, -1);
         setCurrentActiveDate(beforeMonthDateTime);
         setCalendar(getCurrentCalendar(beforeMonthDateTime));
     };
@@ -28,7 +28,7 @@ export const useCalendar = () => {
     };
 
     const moveToNextMonth = () => {
-        const nextMonthDateTime = getDayOffsetDateTime(currentActiveDate, 1);
+        const nextMonthDateTime = getMonthOffsetDateTime(currentActiveDate, 1);
         setCurrentActiveDate(nextMonthDateTime);
         setCalendar(getCurrentCalendar(nextMonthDateTime));
     };
