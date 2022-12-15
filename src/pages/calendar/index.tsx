@@ -7,7 +7,7 @@ import { extractDateTime } from 'utils/date';
 const calendarGridStyle = (rowNum: number) => css`
     display: grid;
     grid-template-columns: repeat(7, calc(100% / 7));
-    grid-auto-rows: calc(calc(100vh - 42rem) / ${rowNum});
+    grid-auto-rows: calc(calc(100vh - 20rem) / ${rowNum});
 `;
 
 const Calendar = () => {

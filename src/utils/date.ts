@@ -26,17 +26,13 @@ const getDayOffsetDateTime = (dateTime: string, offset: number) =>
 // 첫째주 빈 값 & 막주 빈값 이전 이후 달로 채워야함
 const getCurrentCalendar = (currentActiveDate: string) => {
     const { year, month } = extractDateTime(currentActiveDate);
+    const prevLast = new Date(year, month - 1, 0).toLocaleDateString();
+    const thisLast = new Date(year, month, 0).toLocaleDateString();
+
+    const { day: prevLastDay } = extractDateTime(prevLast);
+    const { date: thisLastDate, day: thisLastDay } = extractDateTime(thisLast);
 
     let calendarInfo: string[] = [];
-
-    const prevLast = new Date(year, month - 1, 0);
-    const thisLast = new Date(year, month, 0);
-
-    const prevLastDay = prevLast.getDay();
-
-    const thisLastDate = thisLast.getDate();
-    const thisLastDay = thisLast.getDay();
-
     const prevDates: string[] = [];
     const thisDates: string[] = [];
     const nextDates: string[] = [];
@@ -49,14 +45,14 @@ const getCurrentCalendar = (currentActiveDate: string) => {
     // 이전 달의 마지막 날이 토요일이 아닌경우
     if (prevLastDay !== 6) {
         for (let i = 0; i < prevLastDay + 1; i += 1) {
-            const date = getDayOffsetDateTime(prevLast.toLocaleDateString(), -i);
+            const date = getDayOffsetDateTime(prevLast, -i);
             prevDates.unshift(date);
         }
     }
     // 이번달의 마지막 날이 토요일이 아닌경우
     if (thisLastDay !== 6) {
         for (let i = 1; i < 7 - thisLastDay; i += 1) {
-            const date = getDayOffsetDateTime(thisLast.toLocaleDateString(), i);
+            const date = getDayOffsetDateTime(thisLast, i);
             nextDates.push(date);
         }
     }
