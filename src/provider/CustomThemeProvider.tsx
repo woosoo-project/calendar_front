@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Global, ThemeProvider } from '@emotion/react';
 import { light, dark } from 'styles/theme';
 import { GlobalStyles } from 'styles/global';
 
 type props = {
-    children: React.ReactNode;
+    children: JSX.Element;
 };
 
 const CustomThemeProvider = ({ children }: props) => {
@@ -24,7 +24,7 @@ const CustomThemeProvider = ({ children }: props) => {
         if (
             window.localStorage.getItem('theme') === 'dark' ||
             (window.matchMedia('(prefers-color-scheme: dark)').matches &&
-                !window.localStorage.getItem('welcoming-theme'))
+                !window.localStorage.getItem('theme'))
         ) {
             setIsDark(true);
         }

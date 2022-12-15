@@ -38,5 +38,9 @@
                 "peerDependencies": true
             }
         ]
+    },
+    "globals": {
+        "React": true,
+        "JSX": true
     }
 }
