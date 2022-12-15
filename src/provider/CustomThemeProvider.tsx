@@ -38,17 +38,17 @@ const CustomThemeProvider = ({ children }: props) => {
         }
     }, [isDark]);
 
-    return (
-        mounted && (
-            <ThemeProvider theme={theme}>
-                <Global styles={GlobalStyles(theme)} />
-                {children}
-                <button type="button" onClick={handleToggleTheme}>
-                    {isDark ? '라이트 모드로 보기' : '다크모로 보기'}
-                </button>
-            </ThemeProvider>
-        )
+    const body = (
+        <ThemeProvider theme={theme}>
+            <Global styles={GlobalStyles(theme)} />
+            {children}
+            <button type="button" onClick={handleToggleTheme}>
+                {isDark ? '라이트 모드로 보기' : '다크모로 보기'}
+            </button>
+        </ThemeProvider>
     );
+
+    return mounted ? body : <div style={{ visibility: 'hidden' }}>{body}</div>;
 };
 
 export default CustomThemeProvider;
